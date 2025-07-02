@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback } from 'react';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,8 +8,10 @@ import type { Email, CreateEmailInput } from '../../server/src/schema';
 import { EmailList } from '@/components/EmailList';
 import { EmailView } from '@/components/EmailView';
 import { ComposeEmail } from '@/components/ComposeEmail';
+import { ThemeProvider } from '@/components/ThemeContext';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
-function App() {
+function AppContent() {
   const [emails, setEmails] = useState<Email[]>([]);
   const [inboxEmails, setInboxEmails] = useState<Email[]>([]);
   const [selectedEmail, setSelectedEmail] = useState<Email | null>(null);
@@ -71,17 +72,18 @@ function App() {
   }, [loadAllEmails, loadInboxEmails]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto p-6 max-w-7xl">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">📧 Internal Email Client</h1>
-              <p className="text-gray-600 mt-1">Manage your internal communications</p>
+              <h1 className="text-3xl font-bold text-foreground">📧 Internal Email Client</h1>
+              <p className="text-muted-foreground mt-1">Manage your internal communications</p>
             </div>
             <div className="flex items-center space-x-4">
-              <div className="text-sm text-gray-600">
+              <ThemeToggle variant="switch" showLabel />
+              <div className="text-sm text-muted-foreground">
                 Logged in as: <Badge variant="secondary">{currentUser}</Badge>
               </div>
               <Input
@@ -124,7 +126,7 @@ function App() {
               </CardHeader>
               <CardContent>
                 {inboxEmails.length === 0 ? (
-                  <div className="text-center py-8 text-gray-500">
+                  <div className="text-center py-8 text-muted-foreground">
                     <p>📭 No emails in your inbox yet!</p>
                     <p className="text-sm mt-2">Send yourself an email to test the system.</p>
                   </div>
@@ -153,7 +155,7 @@ function App() {
               </CardHeader>
               <CardContent>
                 {emails.length === 0 ? (
-                  <div className="text-center py-8 text-gray-500">
+                  <div className="text-center py-8 text-muted-foreground">
                     <p>📪 No emails in the system yet!</p>
                     <p className="text-sm mt-2">Compose your first email to get started.</p>
                   </div>
@@ -205,7 +207,7 @@ function App() {
               />
             ) : (
               <Card>
-                <CardContent className="text-center py-8 text-gray-500">
+                <CardContent className="text-center py-8 text-muted-foreground">
                   <p>No email selected</p>
                 </CardContent>
               </Card>
@@ -214,6 +216,14 @@ function App() {
         </Tabs>
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

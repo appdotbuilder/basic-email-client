@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -23,7 +22,7 @@ export function EmailView({ email, onClose, currentUser }: EmailViewProps) {
               <Badge variant={isReceived ? "default" : "secondary"}>
                 {isReceived ? "📥 Received" : "📤 Sent"}
               </Badge>
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-muted-foreground">
                 Email ID: {email.id}
               </span>
             </div>
@@ -40,22 +39,22 @@ export function EmailView({ email, onClose, currentUser }: EmailViewProps) {
       
       <CardContent className="space-y-4">
         {/* Email Headers */}
-        <div className="bg-gray-50 p-4 rounded-lg space-y-2">
+        <div className="bg-muted p-4 rounded-lg space-y-2">
           <div className="flex items-center space-x-2">
-            <span className="font-semibold text-gray-700 min-w-16">From:</span>
-            <span className="text-gray-900">{email.sender}</span>
+            <span className="font-semibold text-muted-foreground min-w-16">From:</span>
+            <span className="text-foreground">{email.sender}</span>
           </div>
           <div className="flex items-center space-x-2">
-            <span className="font-semibold text-gray-700 min-w-16">To:</span>
-            <span className="text-gray-900">{email.recipient}</span>
+            <span className="font-semibold text-muted-foreground min-w-16">To:</span>
+            <span className="text-foreground">{email.recipient}</span>
           </div>
           <div className="flex items-center space-x-2">
-            <span className="font-semibold text-gray-700 min-w-16">Subject:</span>
-            <span className="text-gray-900">{email.subject}</span>
+            <span className="font-semibold text-muted-foreground min-w-16">Subject:</span>
+            <span className="text-foreground">{email.subject}</span>
           </div>
           <div className="flex items-center space-x-2">
-            <span className="font-semibold text-gray-700 min-w-16">Date:</span>
-            <span className="text-gray-900">
+            <span className="font-semibold text-muted-foreground min-w-16">Date:</span>
+            <span className="text-foreground">
               {email.sent_at.toLocaleDateString()} {email.sent_at.toLocaleTimeString()}
             </span>
           </div>
@@ -64,10 +63,10 @@ export function EmailView({ email, onClose, currentUser }: EmailViewProps) {
         <Separator />
 
         {/* Email Body */}
-        <div className="bg-white border rounded-lg p-6">
-          <h3 className="font-semibold text-gray-900 mb-3">Message:</h3>
+        <div className="bg-card border rounded-lg p-6">
+          <h3 className="font-semibold text-foreground mb-3">Message:</h3>
           <div className="prose prose-sm max-w-none">
-            <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">
+            <p className="text-foreground whitespace-pre-wrap leading-relaxed">
               {email.body}
             </p>
           </div>
@@ -75,7 +74,7 @@ export function EmailView({ email, onClose, currentUser }: EmailViewProps) {
 
         {/* Actions */}
         <div className="flex items-center justify-between pt-4 border-t">
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-muted-foreground">
             {isReceived ? '📨 This email was sent to you' : '📤 You sent this email'}
           </div>
           <div className="space-x-2">

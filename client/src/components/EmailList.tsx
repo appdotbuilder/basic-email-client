@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -30,23 +29,23 @@ export function EmailList({ emails, onEmailSelect, currentUser }: EmailListProps
                   <Badge variant={email.recipient === currentUser ? "default" : "secondary"}>
                     {email.recipient === currentUser ? "📥 Received" : "📤 Sent"}
                   </Badge>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-muted-foreground">
                     {email.sent_at.toLocaleDateString()} {email.sent_at.toLocaleTimeString()}
                   </span>
                 </div>
                 
                 <div className="flex items-center space-x-2 mb-1">
-                  <span className="text-sm font-medium text-gray-600">From:</span>
-                  <span className="text-sm text-gray-900">{email.sender}</span>
-                  <span className="text-sm font-medium text-gray-600">To:</span>
-                  <span className="text-sm text-gray-900">{email.recipient}</span>
+                  <span className="text-sm font-medium text-muted-foreground">From:</span>
+                  <span className="text-sm text-foreground">{email.sender}</span>
+                  <span className="text-sm font-medium text-muted-foreground">To:</span>
+                  <span className="text-sm text-foreground">{email.recipient}</span>
                 </div>
                 
-                <h3 className="font-semibold text-gray-900 truncate mb-1">
+                <h3 className="font-semibold text-foreground truncate mb-1">
                   {email.subject}
                 </h3>
                 
-                <p className="text-sm text-gray-600 line-clamp-2">
+                <p className="text-sm text-muted-foreground line-clamp-2">
                   {email.body.length > 100 
                     ? `${email.body.substring(0, 100)}...` 
                     : email.body

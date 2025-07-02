@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -59,9 +58,9 @@ export function ComposeEmail({ onSend, isLoading, defaultSender, onSuccess }: Co
   return (
     <div className="space-y-4">
       {showSuccess && (
-        <Card className="border-green-200 bg-green-50">
+        <Card className="border-green-500/50 bg-green-500/10">
           <CardContent className="p-4">
-            <div className="flex items-center space-x-2 text-green-800">
+            <div className="flex items-center space-x-2 text-green-600 dark:text-green-400">
               <span>✅</span>
               <span className="font-medium">Email sent successfully!</span>
             </div>
@@ -128,7 +127,7 @@ export function ComposeEmail({ onSend, isLoading, defaultSender, onSuccess }: Co
         </div>
 
         <div className="flex items-center justify-between pt-4">
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-muted-foreground">
             📝 All fields are required
           </div>
           <div className="space-x-2">
